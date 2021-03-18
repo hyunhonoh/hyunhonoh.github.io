@@ -1,7 +1,7 @@
 ---
 layout: book
 title:  "<나는 리뷰어다 2021> 네이버 스마트스토어 시작하기"
-date:   2021-03-19 19:23:35 +0900
+date:   2021-03-19 08:23:35 +0900
 category: bookreview
 tags:
 - book
