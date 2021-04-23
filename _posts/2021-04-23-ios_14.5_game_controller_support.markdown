@@ -23,9 +23,9 @@ published: true
 ![](/images/xbox_wireless_controller.png)
 
 >> iOS는 향후 지원될 예정입니다.
+
 라고 겉에 써 있는데 이걸 못 본 것이었습니다.
 콘솔에 연결에서 사용하려고 사서 신경을 안썼는데 아이패드에 연결해서 사용하려고 했었으면 반품을 해야 할 뻔했습니다. 
-
 기존에 애플 홈페이지에서도 지원 예정이라고 되어 있었습니다.
 
 ![](/images/ios_xbox_controller.png)
