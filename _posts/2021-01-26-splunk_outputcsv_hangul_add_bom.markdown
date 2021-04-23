@@ -1,69 +1,28 @@
 ---
 layout: post
-title:  "Splunk 검색 결과 내려받기 한글 깨짐 수정"
-date:   2021-01-26 23:23:35 +0900
+title:  "Splunk dbx1 1.2.2 manual"
+date:   2021-04-22 23:23:35 +0900
 categories: 
 - Splunk
 tags:
 - splunk
-- csv
-- 한글
+- dbx1
+- manual
 classes: wide
 published: true
 ---
 
-Splunk 검색 결과 후에 내려받기를 눌러서 저장한 csv를 바로 엑셀에서 읽으면 한글이 깨집니다.
-이는 한글 excel에서는 바로 utf-8형식의 글을 읽을 때 인식을 제대로 못하는 것으로 알고 있습니다.
+Splunk 에서 데이터베이스와 연동을 하기 위해서는 dbx를 사용합니다. 현재는 3버전(4/16일에 나온 3.5.1이 최신)까지 나와있고 기존에 있던 1, 2 버전은 지원이 끝나서 사용할 수 없는 상태입니다. (기존에는 2버전이 남아 있었던거 같은데 이번 업데이트로 문서도 없어지고 파일도 없어진 것으로 보입니다. 업그레이드 문서에는 2버전에 대한 언급이 있는데 해당 파일이 없으면 신규로 구성을 해야 할 듯 합니다.)
 
-그래서 다운 받는 csv 데이터에 BOM을 추가해 주면 utf-8문서로 인식하고 정상적으로 읽어지면서 한글이 깨지지 않게 됩니다.
-물론 일반 텍스트 에디터로 보면 앞부분에 BOM문자가 표시되긴 하지만 바로 엑셀에서 읽으면 문제는 없습니다.
-
-[https://community.splunk.com/t5/Getting-Data-In/how-to-export-csv-with-BOM/m-p/198357](https://community.splunk.com/t5/Getting-Data-In/how-to-export-csv-with-BOM/m-p/198357)
-
-- ```splunkhome/lib/python2.7/site-packages/splunk/rest/__init__.py``` 의 파일을 수정합니다.
-
-- 수정 후
-
-```python
-    def readall(self, blocksize=32768):
-        """
-        Returns a generator reading blocks of data from the response
-        until all data has been read
-        """
-        response = self.response
-        import codecs
-        counter = 0;
-        while 1:
-            data = response.read(blocksize)
-            if not data:
-                break
-            if counter == 0:
-                data = "".join((codecs.BOM_UTF8, data))
-                counter += 1
-            yield data
-```
+[https://splunkbase.splunk.com/app/2686/](https://splunkbase.splunk.com/app/2686/)
 
 
-해당 코멘트에 추가로 변경된 파이선 3버전의 수정 사항도 있습니다.
+dbx3도 좋은 도구이고 계속 버전이 되고 있어 데이터베이스와 연동을 하기 위해서는 어쩔 수 없는 선택이긴 합니다.
 
-- 3 버전 코드 (앞부분에 b를 추가)
-```python
-    def readall(self, blocksize=32768):
-        """
-        Returns a generator reading blocks of data from the response
-        until all data has been read
-        """
-        response = self.response
-        import codecs
-        counter = 0;
-        while 1:
-            data = response.read(blocksize)
-            if not data:
-                break
-            if counter == 0:
-                data = b"".join((codecs.BOM_UTF8, data))
-                counter += 1
-            yield data
-```
+아직 dbx1이 설치되고 사용되는 곳도 있는데 기존에는 설치 파일만 받아두는 경우가 대부분이었습니다. 하지만 갑자기 기능에 대한 설명이 보고 싶어서 메뉴얼을 찾아보니 dbx1 버전에 대해서도 과거 버전만 있고 자료가 거의 삭제 되어 있었습니다.
 
-기록을 위해 남겨둡니다.
+그러다가 하드를 다시 찾아보니 1.2.2 버전에 대해서 받아 둔 것이 있어 올려봅니다.
+
+[DBX1 MANUAL](/static/DBX-1.2.2-DeployDBX.pdf)
+
+어차피 사용하지 않는게 정상이긴 하나 dblookup등은 1버전의 방식이 더 좋아 아직 사용하고 있어 문서 참조용으로 올려 둡니다.
