@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "miniconda 대신 miniforge"
-date:   2019-05-10 19:23:35 +0900
+date:   2021-05-10 19:23:35 +0900
 categories: 
 - Linux
 tags:
