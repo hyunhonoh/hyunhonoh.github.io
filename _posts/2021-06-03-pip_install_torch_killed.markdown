@@ -42,6 +42,7 @@ Successfully installed future-0.18.2 torch-1.6.0
 ```
 
 하지만, 결론은 실제 수행은 안되어 서버에 swap 을 설정하고 구동을 하였습니다.
+
 [https://extrememanual.net/12975](https://extrememanual.net/12975)
 
 기록을 위해 남겨둡니다.
