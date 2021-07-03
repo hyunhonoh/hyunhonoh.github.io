@@ -3,7 +3,7 @@ layout: post
 title:  "ridibooks pc viewer 2.7.6이 아직 수행이 되네요 "
 date:   2021-06-24 19:23:35 +0900
 categories: 
-- Life
+- life
 tags:
 - ridibook
 - 뷰어
