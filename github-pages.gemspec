@@ -1,1 +1,1 @@
-spec.add_dependency "bundler", ">= 2.2.10"
+spec.add_development_dependency "bundler", ">= 2.2.33"
