@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "CentOS 7에서 gcc 4.9.2 설치하기"
+date:   2019-02-08 19:23:35 +0900
+categories: 
+- Linux
+tags:
+- gcc
+- 4.9.2
+- centos
+- linux
+classes: wide
+published: true
+---
+
+오랜만에 centos에 khaiii를 설치하기 위해서 컴파일을 하는데 gcc 버전을 4.9 이상을 요구합니다. 기본으로 gcc를 설치하니 4.8.5 버전이라 맞지 않아 실행이 안되네요.
+
+아래의 링크를 이용하면 4.9.2버전을 설치 할 수 있습니다.
+
+[https://gist.github.com/craigminihan/b23c06afd9073ec32e0c](https://gist.github.com/craigminihan/b23c06afd9073ec32e0c)
+
+
+아래는 참조를 위한 백업
+
+```bash
+sudo yum install libmpc-devel mpfr-devel gmp-devel
+
+cd ~/Downloads
+curl ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.9.2/gcc-4.9.2.tar.bz2 -O
+tar xvfj gcc-4.9.2.tar.bz2
+
+cd gcc-4.9.2
+./configure --disable-multilib --enable-languages=c,c++
+make -j 4
+make install
+```

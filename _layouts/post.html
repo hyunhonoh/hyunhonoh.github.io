@@ -1,0 +1,201 @@
+---
+layout: default
+disqus: false
+archive: false
+post_class: post-template
+---
+
+<header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
+    <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
+        <a class="back-button icon-arrow-left" href="{{ site.url }}">Home</a>
+        <a class="subscribe-button icon-feed" href="{{ site.url }}/feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
+                {% if page.categories.size > 0 %}
+                {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
+                {% endif %}
+            </section>
+        </header>
+
+<!--         <header class="post-header">
+            <a id="blog-logo" href="{{site.url}}">
+                {% if site.logo %}
+                    <img src="{{site.logo}}" alt="{{ site.name }}" />
+                {% else %}
+                    <span class="blog-title">{{ site.name }}</span>
+                {%endif%}
+            </a>
+        </header> -->
+
+        <!-- <span class="post-meta">
+            <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
+            {% if page.categories.size > 0 %}
+                {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
+            {% endif %}
+        </span> -->
+
+        <!-- <h1 class="post-title">{{ page.title }}</h1> -->
+
+        <section class="post-content">
+            {{content}}
+        </section>
+
+        {% if page.archive %}
+        <section class="archive">
+            <h5>Archive</h5>
+            <ul>
+                {% for post in site.posts %}
+                <li><span>{{ post.date | date_to_string }}</span>  <a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+
+        <section class="archive">
+            <!-- Related Posts-->
+
+        <style>
+            .rect {
+                border-top: 3px solid #333;
+                border-bottom: 3px solid #333;
+                padding-top: 15px;
+                margin:5px auto;
+            }
+
+            .rel {
+                width: 200px;
+                display: inline-block;
+                padding: 5px;
+                opacity: 0.8;
+            }
+
+            .rel hover {
+                opacity: 1;    
+            }
+        </style>
+        <!-- {% assign random = site.time | date: "%s%N" | modulo: site.posts.size %}
+        <h1>{{ site.posts[random].title }}</h1>
+        <p>{{ site.time | date: "%S"  }}</p>
+        <p>{{ random }}</p>
+        <p>{{ site.posts.size }}</p>
+        <p>{{ site.time }}</p> -->
+        <div class="rect">
+            <h5>Related Posts</h5>
+
+            {% assign maxRelated = 4 %}
+            {% assign minCommonTags =  1 %}
+            {% assign maxRelatedCounter = 0 %}
+          
+            <ul>
+            {% for post in site.posts %}
+
+              {% assign sameTagCount = 0 %}
+              {% assign commonTags = '' %}
+          
+              {% for tag in post.tags %}
+                {% if post.url != page.url %}
+                  {% if page.tags contains tag %}
+                    {% assign sameTagCount = sameTagCount | plus: 1 %}
+                    {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+                    {% assign commonTags = commonTags | append: tagmarkup %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+          
+              {% if sameTagCount >= minCommonTags %}
+          
+                    <li class="relatedPost">
+                        <a href="{{ site.url }}{{ post.url }}">{{ post.title }}
+                        {% if post.series %}
+                            (Series: {{ post.series }})
+                        {% endif %}
+                        </a>
+                    </li>
+                {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+                {% if maxRelatedCounter >= maxRelated %}
+                  {% break %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        <!--http://sangsoonam.github.io/2019/01/15/random-related-posts-in-jekyll.html-->
+        <div class="rect">
+            <h5>Random Posts</h5>
+            {% assign posts = site.posts | where_exp:"post", "post.url != page.url" | sample: 4 %}
+            <ul>
+                {% for post in posts %}
+                    <li class="relatedPost">
+                        <a href="{{ site.url }}{{ post.url }}">{{ post.title }}
+                        {% if post.series %}
+                            (Series: {{ post.series }})
+                        {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        </section>
+        <!-- Related Posts-->
+
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            {% if site.author %}
+            <figure class="author-image">
+                <a class="img" href="{{ site.baseurl }}" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">{{site.author}}'s Picture</span></a>
+            </figure>
+            <section class="author">
+                <!-- Author Name -->
+                <h4> {{ site.author }} </h4>
+                <!-- Author Bio -->
+                <p>
+                    언제나 즐겁게~~!!
+                </p>
+            </section>
+            {% endif %}
+
+                <!-- Share links section -->
+                {% include share.html %}
+
+
+                <!-- google adsense -->
+                {% include adsense.html %}
+
+                <!-- Disqus comments -->
+                {% if site.disqus %}
+                {% include disqus.html %}
+                {% endif %}
+
+                <section class="page-nav">
+
+                {% if page.previous.url or page.next.url %}
+                    {% if page.next.url %}
+                        <a href="{{ page.next.url | prepend: site.url }}">« {{ page.next.title }}</a>
+                    {% else %} 
+                        <span></span> 
+                    {% endif %}
+                    {% if page.previous.url %}
+                        <a href="{{ page.previous.url | prepend: site.url }}">{{ page.previous.title }} »</a>
+                    {% else %} 
+                        <span></span> 
+                    {% endif %}
+                {% endif %}
+                </section>
+
+            </footer>
+
+        </article>
+
+    </main>

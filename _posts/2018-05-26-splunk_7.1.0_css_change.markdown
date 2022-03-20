@@ -1,0 +1,86 @@
+---
+layout: post
+title:  "Splunk 7.1.0 사용자 CSS 수정 방법"
+date:   2018-05-28 18:23:35 +0900
+categories: 
+- Splunk
+tags:
+- splunk
+- css
+- dashboard
+classes: wide
+published: true
+---
+
+
+
+*비공식적인 방법입니다. 버전이 업데이트 되면 새로 작업을 해야합니다. 참고만 하시면 될 듯 합니다.*
+
+Splunk의 UI는 그동안 여러가지 모양으로 변경이 되고 있습니다.  6버전대의 변경에서 크게 7버전에서 변경이 되었고 7.1버전에서도 많은 부분이 변경되었습니다.
+
+Splunk는 기본적으로 UI를 변경하기 위해서는 대시보드에 한에서 custom css, js를 적용할 수 있는 [기능](http://docs.splunk.com/Documentation/Splunk/7.0.3/AdvancedDev/UseCSS)을 제공합니다. 그래서 대시보드에는 변경이 가능합니다. static 디렉토리에 원하는 css,js 를 넣고 대시보드에 설정을 하면 다양한 기능을 추가할 수 있습니다.
+
+지금 살펴볼 방법은 변경이 안되는 부분을 직접 하드코딩으로 소스를 찾아서 변경을 하는 내용에 대해서 간단하게 설명을 합니다. 이는 정식적인 방법이 아니면서 버전업이 되면 다시 한번 수정을 해야합니다.
+
+현재 최신 버전은 7.1.x는 bootstrap을 최대한 활용한 UI를 이용하는 것으로 보입니다. 기존에는 검색앱의 기능별로 개별 js, css가 존재했으나 현재는 많은 부분이 통합된 것으로 보입니다. 그래서 전체적인 UI는 bootstrap-enterprise.css로 수정을 하고 나머지 필요한 부분에 대해서 js별로 추가적인 css를 적용하는 것으로 보입니다.
+
+7.1은 기존과는 가독성을 늘리기 위해서인지 폰트의 크기가 기존과는 다르게 12px에서 14px로 늘어났습니다. 가독성면에서는 커진 폰트로 화면을 꽉차게 구성할 수 있지만 내용이 많은 부분에서는 데이터를 표현할 수 있는 크기가 그만큼 적게 표현하는 것으로 인식이 됩니다. 
+
+
+
+그래서 설정에서 font-size를 찾아서 필요한 부분을 변경해 보려고 합니다. 우선 브라우저의 검사 도구를 이용해서 폰트의 상태를 보니 기본적으로 bootstrap-enterprise.css를 기반으로 하는 것으로 보입니다. 그래서 찾아보니 ```font-size:14px```의 속성을 확인하고 이 부분을 한 번 바꾸어 보았습니다.(수정1)
+
+
+
+- 수정 1. \$SPLUNK_HOME$/share/splunk/search_mrsparkle/exposed/build/css/bootstrap-enterprise.css
+
+```bash
+:%s/font-size:14px/font-size:12px/g
+```
+
+
+
+![image-20180526102525387](/images/image-20180526102525387.png)
+
+수정 후 결과를 보면 전체적으로 12포인트로 변경이 되었는데 중간에 보면 이벤트를 보여주는 부분은 여전히 14포인트로 지정이 되어 있습니다. 파일명은 안 적혀 있어 제가 이해하기에는 ```.event .raw-event```가 보이네요. 그래서 이부분이 있는 js를 찾아보니 다음과 같은 파일이 있어서 수정해 보았습니다. 기존에는 각 검색이면 검색, 보고서면 보고서 따로 js 가 있었는데 지금은 다른 파일명이 존재합니다.
+
+```bash
+$ cd share/splunk
+$ grep -Ril ".raw-event" ./*
+./search_mrsparkle/exposed/build/splunkjs_dj/7.7.js
+./search_mrsparkle/exposed/build/simplexml/7.7.js
+./search_mrsparkle/exposed/build/pages/lite/common.js
+./search_mrsparkle/exposed/build/pages/enterprise/common.js
+./search_mrsparkle/exposed/js/build/simplexml.min/7.7.js
+./search_mrsparkle/exposed/js/build/splunkjs/7.7.js
+./search_mrsparkle/exposed/js/build/simplexml/7.7.js
+./search_mrsparkle/exposed/js/build/splunkjs.min/7.7.js
+./search_mrsparkle/exposed/js/views/shared/eventsviewer/Master.pcss
+./search_mrsparkle/exposed/js/views/shared/eventsviewer/Master.pcss.js
+./search_mrsparkle/exposed/js/views/shared/eventsviewer/shared/RawField.js
+$
+```
+
+
+
+수정2는 pages의 ```common.js```라는 파일이 보여서 수정을 했습니다. 
+
+- 수정 2  \$SPLUNK_HOME$/share/splunk/search_mrsparkle/exposed/build/pages/enterprise/common.js
+  - 아래의 위치의 값을 수정하면 적용.
+
+![image-20180526101157302](/images/image-20180526101157302.png)
+
+
+
+![image-20180526101727763](/images/image-20180526101727763.png)
+
+
+
+수정을 하고 다시 확인을 해보니 정확하게 원하는 부분의 크기가 변경된 것을 확인했습니다. 
+
+
+
+여기까지 한 내용을 바탕으로 예상해 보면 기존과는 다르게 메인의 css는 bootstrap-enterprise.css를 바탕으로 모든 화면이 구성이 되며 각 필요한 부분에 맞는 부분에 사용되는 js가 css를 덮어쓰는 형태로 제공이 되는거 같습니다.이는 기존과 다르게 공통화된 파일이 많아지면서 캐싱이 잘 되고 화면을 좀 더 빠르게 보여주기 위한 방법으로 진행하기 위해서 변경이 된 것으로 이해가 됩니다.
+
+기존 6버전에서 수정해야하는 포인트보다는 많은 부분이 축소되긴 했지만 이 방법은 기본적으로 권장하는 방법이 아니기 때문에 정말 어쩔 수 없을 때 검토를 해 보는게 좋아 보입니다.
+

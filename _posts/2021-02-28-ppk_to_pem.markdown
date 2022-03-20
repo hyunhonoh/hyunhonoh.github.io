@@ -1,0 +1,51 @@
+---
+layout: post
+title:  "ppk 파일 pem 변환하기(MAC OS)"
+date:   2021-02-28 23:23:35 +0900
+categories:
+- mac
+tags:
+- iterm2
+- ssh
+- ppk
+- pem
+classes: wide
+published: true
+---
+
+새로 서버를 설치하면서 기존 만들어 둔 키로 로그인이 안되어 확인해 보니 인증서의 암호화 방식이 차이가 있었습니다.
+안되는 방식은 기본적인 rsa 방식의 인증서이고 신규 서버 설정을 확인해 보니 ed25519라는 방식으로 된 키로 적용이 되었습니다.
+보안상 rsa보다 좋은거 같기도 하고, 추가로 키 값이 짧은게 더 빠른 속도를 내는거 같다고 합니다.
+
+관련하여 윈도우에서 puttygen으로 생성을 하고 설정을 하니 정상적으로 로그인이 되었습니다. 
+하지만 윈도우 환경에서는 간단하게 puttygen 으로 변경이 가능하나 맥에서는 putty가 없어 ppk를 설정할 수 있는 방법이 없나 확인해 보니 brew 로 putty를 설치하면 동일하게 puttygen을 사용할 수 있었습니다.
+
+### putty install
+
+```bash
+brew install putty
+```
+
+### key 변경
+
+```bash
+puttygen key.ppk -O private-openssh -o key.pem
+```
+
+
+```bash
+puttygen key.ppk -O private-openssh -o id_ed25519
+puttygen key.ppk -O public-openssh -o id_ed25519.pub
+```
+
+위와 같이 수행하니 ssh-keygen으로 ed25519형식으로 생성한 파일과 동일한 포멧으로 나왔습니다.
+
+
+
+참고 
+
+- [https://www.nemonein.xyz/2018/10/1124/](https://www.nemonein.xyz/2018/10/1124/)
+
+- [https://www.letmecompile.com/certificate-file-format-extensions-comparison/](https://www.letmecompile.com/certificate-file-format-extensions-comparison/)
+
+- [https://www.codeblocq.com/2016/05/Convert-a-putty-ppk-key-to-a-pem-file-on-OSX/](https://www.codeblocq.com/2016/05/Convert-a-putty-ppk-key-to-a-pem-file-on-OSX/)

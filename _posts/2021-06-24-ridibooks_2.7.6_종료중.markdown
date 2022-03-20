@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "ridibooks pc viewer 2.7.6이 아직 수행이 되네요 "
+date:   2021-06-24 19:23:35 +0900
+categories: 
+- life
+tags:
+- ridibook
+- 뷰어
+- book
+classes: wide
+published: true
+---
+
+리디북스 PC 뷰어는 중간에 판올림을 하여서 베타가 되면서 2.7.6 버전에 대해서 지원을 종료한다고 하는 공지가 있었습니다.
+
+[지원종료공지](https://help.ridibooks.com/hc/ko/articles/360063200733--%EA%B3%B5%EC%A7%80-%EC%9D%B4%EC%A0%84-PC-%EB%B7%B0%EC%96%B4-2-7-6-%EC%9D%B4%ED%95%98-%EC%A7%80%EC%9B%90-%EC%A2%85%EB%A3%8C-%EC%98%88%EC%A0%95-%EC%95%88%EB%82%B4-)
+
+
+그러면서 베타로 넘어가고 과거로 못 돌아간다고 알고 있었는데 다시 공지를 보니 아직 종료를 안한 것으로 보입니다.
+
+
+
+>> 종료 일자는 변경 되어 정확한 일정은 추후 다시 안내드리도록 하겠습니다. 이용에 불편을 드려 죄송합니다.
+
+
+![](/images/ridibooks_viewer_2_7_6.png)
+
+신규로 다운을 받을 수는 없지만 기존에 다운 받아진 파일을 수행하는것은 문제가 없어 보입니다. 

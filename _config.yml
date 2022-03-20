@@ -1,0 +1,31 @@
+name: data life!!
+description: 잘 나가는 engineer, 근사한 barista, 늘 새로운 early adopter가 되고 싶은 건담아빠.
+meta_description: "IT, Splunk, Data, 일상이야기, MAC OS"
+permalink: /:categories/:title/ 
+
+markdown: kramdown
+highlighter: rouge
+logo: false
+paginate: 10
+baseurl: /
+domain_name: "https://hyunhonoh.github.io"
+google_analytics: 'UA-81119955-1'
+gems: [jekyll-paginate]
+
+# Details for the RSS feed generator
+url: "https://hyunhonoh.github.io"
+author:         'HyunHo Noh'
+
+disqus: hyunhonoh
+
+owner:
+  name:           "HyunHo Noh"
+  avatar:         "https://avatars2.githubusercontent.com/u/6688711?s=460&v=4"
+  email:          "nohhyunho@outlook.com"
+  # Social networking links used in footer. Update and remove as you like.
+  twitter: https://twitter.com/geonsdad
+  github: https://github.com/hyunhonoh
+  stackexchange: 
+  linkedin: https://www.linkedin.com/in/hyunho-noh-41648395/
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:

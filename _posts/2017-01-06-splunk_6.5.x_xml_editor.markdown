@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Splunk 6.5.x XML Editor 단축키"
+date:   2017-01-06 00:23:35 +0900
+categories: 
+- Splunk
+tags:
+- splunk
+- 스플렁크
+classes: wide
+---
+
+Splunk 6.5.x 부터 바뀐 XML Editor의 환경.
+
+여기서 사용하는 에디터의 단축키를 나타내는 링크가 있어서 공유합니다.
+
+[https://ace.c9.io/demo/keyboard_shortcuts.html](https://ace.c9.io/demo/keyboard_shortcuts.html)
+
+ace라고 하는 web ediotr로 simple xml을 변경하는것 같고 이 editor의 단축키 입니다.
+개인적으로 autoindent가 있으면 좋은거 같은데 아직 그 기능을 찾진 못했네요.
+
+올해도 즐거운 Splunk활용을 기대하면서 포스트를 남깁니다.
+
+2017/12/01 추가
+
+http://docs.splunk.com/Documentation/Splunk/6.5.0/Viz/CreateandeditdashboardsviatheUI#Source_code_editor
+
+
+crtl + shift + f키로 정렬

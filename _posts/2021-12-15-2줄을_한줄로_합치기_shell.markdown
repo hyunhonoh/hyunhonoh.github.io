@@ -1,0 +1,53 @@
+---
+layout: post
+title:  "2줄로 나온 결과를 한 줄로 만들기(awk)"
+date:   2021-12-15 23:23:35 +0900
+categories: 
+- Linux
+tags:
+- shell
+- awk
+- splunk
+classes: wide
+published: true
+---
+
+
+파일 목록이 있고 각 파일안에 있는 라인의 개수를 출력하여 정상적으로 수집이 되었는지 확인해야 할 필요가 있습니다.
+매번 원본 파일을 wc로 확인하는게 번거로워 수집해서 비교하려고 쉘스크립트를 작성했습니다.
+
+
+### 파일 안의 라인 개수 
+
+- 어제 생성된 파일 찾기
+
+```
+find /data -name "*.csv.gz" \( -mtime -1 -and -not -daystart -mtime 0 \) | while read -r file; do zcat "$file$" | wc -l; echo "$file"; done
+```
+
+- 결과값 모양
+
+```
+120
+/data/result_20211201.csv.gz
+130
+/data/result_20211202.csv.gz
+```
+
+
+awk를 이용해서 라인을 합칠 수 있어 다음과 같이 작업했습니다.
+
+
+```
+find /data -name "*.csv.gz" \( -mtime -1 -and -not -daystart -mtime 0 \) | while read -r file; do zcat "$file$" | wc -l; echo "$file"; done > /tmp/temp_file.txt
+awk 'NR%2{printf "%s ", %0;next;}1' /tmp/temp_file.txt > /tmp/temp_result.txt
+```
+
+```
+120 /data/result_20211201.csv.gz
+130 /data/result_20211202.csv.gz
+```
+
+파일안의 라인의 수와 파일명이 나와서 스플렁크에 수집후에 확인하기 편리합니다.
+
+기록을 위해 남겨둡니다.
