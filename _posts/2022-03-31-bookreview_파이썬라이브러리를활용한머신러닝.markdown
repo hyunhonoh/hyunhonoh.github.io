@@ -1,6 +1,6 @@
 ---
 layout: book
-title:  "<나는 리뷰어다 2022> 파이썬 라이브러리를 활용한 머신러닝(번역재정2판)"
+title:  "<나는 리뷰어다 2022> 파이썬 라이브러리를 활용한 머신러닝(번역개정2판)"
 date:   2022-03-31 11:23:35 +0900
 category: bookreview
 tags:
@@ -8,7 +8,7 @@ tags:
 - python
 classes: wide
 published: true
-booktitle : 파이썬 라이브러리를 활용한 머신러닝(번역재정2판)
+booktitle : 파이썬 라이브러리를 활용한 머신러닝(번역개정2판)
 author: 안드레아스 뮐러, 세라 기이도
 bookcover: B3887932883_l.jpg
 bookcategory: 머신러닝
