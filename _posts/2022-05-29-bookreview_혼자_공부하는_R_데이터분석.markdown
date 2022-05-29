@@ -23,7 +23,7 @@ book-link: https://www.hanbit.co.kr/store/books/look.php?p_code=B6779219508
 이 도서는 R을 이용해서 처음 배우는 사람들이 쉽게 R을 적응하고 분석을 할 수 있는 도서입니다.
 
 
-![](/images/reviewer_202205_01.JPG){: width="640" }
+![](/images/reviewer_202205_02.JPG){: width="640" }
 
 
 책은 8개의 큰 챕터로 이루어져 있습니다. 
