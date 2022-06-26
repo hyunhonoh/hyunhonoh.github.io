@@ -11,7 +11,7 @@ classes: wide
 published: true
 booktitle : 쉽게 따라하는 NFT 마스터 가이드
 author: 티아나 로런스 , 김서영
-bookcover: B6779219508_l.jpg
+bookcover: B8676970090_l.jpg
 bookcategory: 데이터분석
 stars: 4.5
 book-link: https://www.hanbit.co.kr/store/books/look.php?p_code=B8676970090
