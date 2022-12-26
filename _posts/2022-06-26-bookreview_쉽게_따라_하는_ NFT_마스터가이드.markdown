@@ -1,7 +1,7 @@
 ---
 layout: book
 title:  "<나는 리뷰어다 2022> 쉽게 따라하는 NFT 마스터 가이드"
-date:   2022-05-29 10:23:35 +0900
+date:   2022-05-26 10:23:35 +0900
 category: bookreview
 tags:
 - book
