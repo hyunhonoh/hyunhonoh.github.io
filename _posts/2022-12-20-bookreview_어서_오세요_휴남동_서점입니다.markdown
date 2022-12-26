@@ -1,6 +1,6 @@
 ---
 layout: book
-title:  "어서 오세요, 휴남동 서점입니다"
+title:  "어서 오세요, 휴남동 서점입니다 / 힐링소설"
 date:   2022-12-20 10:23:35 +0900
 category: bookreview
 tags:
