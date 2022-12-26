@@ -47,6 +47,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 article, aside, details,
 figcaption, figure,
 footer, header, hgroup,
@@ -782,6 +789,7 @@ body:not(.post-template) .post-title {
 
 .post-title a {
     text-decoration: none;
+    font-family: 'GowunDodum-Regular';
 }
 
 .post-excerpt p {
