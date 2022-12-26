@@ -789,7 +789,7 @@ body:not(.post-template) .post-title {
 
 .post-title a {
     text-decoration: none;
-    font-family: 'GowunDodum-Regular';
+    font-family: 'GowunDodum-Regular' !important;
 }
 
 .post-excerpt p {
