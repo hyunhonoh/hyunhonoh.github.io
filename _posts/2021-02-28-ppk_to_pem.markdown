@@ -34,6 +34,11 @@ puttygen key.ppk -O private-openssh -o key.pem
 
 
 ```bash
+puttygen key.pem -O private -o key.ppk
+```
+
+
+```bash
 puttygen key.ppk -O private-openssh -o id_ed25519
 puttygen key.ppk -O public-openssh -o id_ed25519.pub
 ```
