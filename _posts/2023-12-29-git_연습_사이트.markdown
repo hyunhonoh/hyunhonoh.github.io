@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "git 연습 사이트"
+date:   2023-12-29 01:23:35 +0900
+categories: 
+- git
+tags:
+- git
+- command
+- practice
+classes: wide
+published: true
+---
+
+회사에서 코드를 관리하기 위해서 git을 많이 사용합니다.
+
+간단하게 사용하기에는 vs code를 이용해서 사용하여도 되나 그래도 기본은 알고 있어야 문제가 생겼을 때 원인을 찾고 해결을 할 수 있다고 생각합니다.
+보통은 명령어 모음만 있는데 찾아보니 연습하는 사이트가 있었습니다.
+
+[https://learngitbranching.js.org/?locale=ko](https://learngitbranching.js.org/?locale=ko)
+
+
+새해에는 git에 대해서라도 잘 익혀야겠습니다.
+
