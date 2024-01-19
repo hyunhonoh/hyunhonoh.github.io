@@ -54,6 +54,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'PurenJeonnam';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/PureunJeonnam.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 article, aside, details,
 figcaption, figure,
 footer, header, hgroup,
@@ -63,7 +70,7 @@ audio, canvas, video { display: inline-block; }
 audio:not([controls]) { display: none; height: 0; }
 [hidden], template { display: none; }
 html {
-   font-family: 'MapoGoldenPier', 'Nanum Gothic', sans-serif;
+   font-family: 'PurenJeonnam', 'MapoGoldenPier', 'Nanum Gothic', sans-serif; /* 20240119 푸른전남추가 */
    -ms-text-size-adjust: 100%;
    -webkit-text-size-adjust: 100%;
 }

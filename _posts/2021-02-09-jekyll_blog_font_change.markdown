@@ -19,7 +19,7 @@ published: true
 
 글꼴도 외국 테마이다보니 영어에 최적화되어 있어서 수정을 하였습니다. 처음에는 [google fonts](https://fonts.google.com)를 이용해서 아래의 코드를 추가하고 사용하고 있었습니다.
 
-```
+```css
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Gothic+Coding|Sunflower:300');
 ```
 
