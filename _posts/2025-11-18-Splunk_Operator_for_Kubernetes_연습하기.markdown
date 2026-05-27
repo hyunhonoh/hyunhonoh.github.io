@@ -48,4 +48,13 @@ spec:
 SOK와 localstack을 이용하면 로컬에서 smartstore연동 테스트가 가능한 부분도 흥미로웠습니다.
 
 
+### 2.8.1 operator url 변경
+- 2025년 3월 18일부로 변경 됨.
+
+```
+gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+-> registry.k8s.io/kubebuilder/kube-rbac-proxy:v0.13.1
+```
+
+
 기록을 위해 남겨둡니다.
