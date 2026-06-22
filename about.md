@@ -23,4 +23,5 @@ title: About me
 - MCSE, MCITP, MCDBA, Linux Master
 - Splunk certified Sales Engineer III, Architect I, Consultant II
 - ADsP
-
+- AWS DEA
+- CKA
